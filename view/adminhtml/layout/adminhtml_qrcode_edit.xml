@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <update handle="editor"/>
+    <head>
+        <script src="SM_PWAQrCode::js/qrcode.min.js"/>
+        <script src="SM_PWAQrCode::js/generateQrCode.js"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="SM\PWAQrCode\Block\Adminhtml\Qrcode\Edit" name="qrcode_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="SM\PWAQrCode\Block\Adminhtml\Qrcode\Edit\Tabs" name="qrcode_edit_tabs">
+                <block class="SM\PWAQrCode\Block\Adminhtml\Qrcode\Edit\Tab\Main" name="qrcode_edit_tab_main"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">qrcode_edit_tab_main</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
