@@ -59,27 +59,21 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             $fieldset->addField('qrcode_id', 'hidden', ['name' => 'qrcode_id']);
         }
 
-        if (!$this->_storeManager->isSingleStoreMode()) {
-            $field    = $fieldset->addField(
-                'store_id',
-                'select',
-                [
-                    'name'     => 'store_id',
-                    'label'    => __('Store'),
-                    'title'    => __('Store'),
-                    'values'   => $this->_systemStore->getStoreValuesForForm(true, false),
-                    'required' => true
-                ]
-            );
-            $renderer = $this->getLayout()->createBlock(
-                \Magento\Backend\Block\Store\Switcher\Form\Renderer\Fieldset\Element::class
-            );
-            $field->setRenderer($renderer);
-        }
-        else {
-            $fieldset->addField('store_id', 'hidden', ['name' => 'store_id']);
-            $model->setStoreId($this->_storeManager->getStore(true)->getId());
-        }
+        $field    = $fieldset->addField(
+            'store_id',
+            'select',
+            [
+                'name'     => 'store_id',
+                'label'    => __('Store'),
+                'title'    => __('Store'),
+                'values'   => $this->_systemStore->getStoreValuesForForm(true, false),
+                'required' => true
+            ]
+        );
+        $renderer = $this->getLayout()->createBlock(
+            \Magento\Backend\Block\Store\Switcher\Form\Renderer\Fieldset\Element::class
+        );
+        $field->setRenderer($renderer);
 
         $fieldDiv = $fieldset->addField(
             'qrcode',
