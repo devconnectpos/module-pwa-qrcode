@@ -10,7 +10,7 @@ require([
   'use strict';
   
   $(document).ready(function () {
-    var qrCode = new QRCode(document.getElementById("qrcode"), {
+    let qrCode = new QRCode(document.getElementById("qrcode"), {
       width : 300,
       height : 300,
       colorDark : "#000000",
@@ -22,25 +22,31 @@ require([
 
   function generateQrCode(qrCode) {
     $('#store_id').change(function() {
+      let baseUrl = $('#baseUrl').val();
+      let store_id = $('#store_id').val();
 
-      var baseUrl = $('#baseUrl').val();
-      var store_id = $('#store_id').val();
+      let protocol = baseUrl.substring(0, baseUrl.indexOf("://"));
       
       // Fixed Value PWA Client
-      //var urlPWA = 'http://pwa.product.smartosc.com';
-       var urlPWA = 'https://mobile.connectpos.com';
+      //let urlPWA = 'http://pwa.product.smartosc.com';
+      let urlPWA = 'https://mobile.connectpos.com';
+      
+      if (protocol === "http") {
+        urlPWA = "http://mobile.connectpos.com";
+      }
+      
 
       makeCode(qrCode, urlPWA, baseUrl, store_id);
 
-      var canvas = $('#qrcode canvas');
-      var img = canvas.get(0).toDataURL("image/png");
-      var button = document.getElementById('btn-download');
+      let canvas = $('#qrcode canvas');
+      let img = canvas.get(0).toDataURL("image/png");
+      let button = document.getElementById('btn-download');
       $("#btn-download").css('display', 'block');
 
-      var today = new Date();
-      var dd = today.getDate();
-      var mm = today.getMonth()+1; //January is 0!
-      var yyyy = today.getFullYear();
+      let today = new Date();
+      let dd = today.getDate();
+      let mm = today.getMonth()+1; //January is 0!
+      let yyyy = today.getFullYear();
 
       if(dd<10) {
           dd = '0'+dd
@@ -51,7 +57,7 @@ require([
       }
 
       today = mm + '/' + dd + '/' + yyyy;
-      var qrCodeName = 'QRCode-PWA-Consumer-App-StoreId-' + store_id + '-'+ today;
+      let qrCodeName = 'QRCode-PWA-Consumer-App-StoreId-' + store_id + '-'+ today;
       button.addEventListener('click', function (e) {
           download(img, qrCodeName, 'image/png');
       });
@@ -60,7 +66,7 @@ require([
   }
 
   function makeCode (qrCode, urlPWA, baseUrl, store_id) {
-    var _query = urlPWA;
+    let _query = urlPWA;
     _query += "?website=" + btoa(baseUrl);
     _query += "&store=" + store_id;
     qrCode.clear();
@@ -69,7 +75,7 @@ require([
   
   function download(data, strFileName, strMimeType) {
     
-    var self = window, // this script is only for browsers anyway...
+    let self = window, // this script is only for browsers anyway...
         defaultMime = "application/octet-stream", // this default mime also triggers iframe downloads
         mimeType = strMimeType || defaultMime,
         payload = data,
@@ -93,7 +99,7 @@ require([
       fileName = url.split("/").pop().split("?")[0];
       anchor.href = url; // assign href prop to temp anchor
       if(anchor.href.indexOf(url) !== -1){ // if the browser determines that it's a potentially valid url path:
-        var ajax=new XMLHttpRequest();
+        let ajax=new XMLHttpRequest();
         ajax.open( "GET", url, true);
         ajax.responseType = 'blob';
         ajax.onload= function(e){
@@ -125,7 +131,7 @@ require([
     
     
     function dataUrlToBlob(strUrl) {
-      var parts= strUrl.split(/[:;,]/),
+      let parts= strUrl.split(/[:;,]/),
           type= parts[1],
           decoder= parts[2] == "base64" ? atob : decodeURIComponent,
           binData= decoder( parts.pop() ),
@@ -165,7 +171,7 @@ require([
       }
       
       //do iframe dataURL download (old ch+FF):
-      var f = document.createElement("iframe");
+      let f = document.createElement("iframe");
       document.body.appendChild(f);
       
       if(!winMode){ // force a mime that will download:
