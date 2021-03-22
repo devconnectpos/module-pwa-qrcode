@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="SM_PWAQrCode::qrcodes" title="Generate QR Codes" translate="title" module="SM_PWAQrCode" sortOrder="10" parent="SM_PWA"
-             action="adminhtml/qrcode/new" dependsOnModule="SM_PWAQrCode" resource="SM_PWAQrCode::qrcodes"/>
+<!--        <add id="SM_PWAQrCode::qrcodes" title="Generate QR Codes" translate="title" module="SM_PWAQrCode" sortOrder="10" parent="SM_PWA"-->
+<!--             action="adminhtml/qrcode/new" dependsOnModule="SM_PWAQrCode" resource="SM_PWAQrCode::qrcodes"/>-->
     </menu>
 </config>
