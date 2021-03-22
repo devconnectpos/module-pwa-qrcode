@@ -2,7 +2,7 @@
 	"name": "connectpos/module-pwa-qrcode",
 	"description": "N/A",
 	"type": "magento2-module",
-	"version": "20.08.18",
+	"version": "21.03.22",
 	"license": [
 		"proprietary"
 	],
