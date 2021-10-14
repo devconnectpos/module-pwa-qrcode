@@ -79,8 +79,8 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             'qrcode',
             'text',
             [
-                'label'    => __(''),
-                'title'    => __(''),
+                'label'    => '',
+                'title'    => '',
                 'name'     => 'text',
                 'disabled' => $isElementDisabled
             ]
@@ -94,8 +94,8 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             'baseUrl',
             'hidden',
             [
-                'label'    => __(''),
-                'title'    => __(''),
+                'label'    => '',
+                'title'    => '',
                 'name'     => 'baseUrl',
                 'id'       => 'baseUrl',
                 'value'    => $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_WEB , true),
@@ -107,8 +107,8 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             'isIntegrateGC',
             'hidden',
             [
-                'label'    => __(''),
-                'title'    => __(''),
+                'label'    => '',
+                'title'    => '',
                 'name'     => 'isIntegrateGC',
                 'id'       => 'isIntegrateGC',
                 'value'    => $this->scopeConfig->getValue("pwa/integrate/pwa_integrate_gift_card"),
@@ -120,8 +120,8 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             'isIntegrateRP',
             'hidden',
             [
-                'label'    => __(''),
-                'title'    => __(''),
+                'label'    => '',
+                'title'    => '',
                 'name'     => 'isIntegrateRP',
                 'id'       => 'isIntegrateRP',
                 'value'    => $this->scopeConfig->getValue("pwa/integrate/pwa_integrate_reward_points"),
